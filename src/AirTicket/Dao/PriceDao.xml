@@ -3,7 +3,7 @@
 
 <mapper namespace="AirTicket.Dao.PriceDao">
 	<insert id="addPrice" parameterType="Price">
-		insert into JOB values (NULL,#{airfrom},#{airto},#{airtime},#{price})
+		insert into PRICE values (NULL,#{airfrom},#{airto},#{airtime},#{price},#{airdate})
 	</insert>
 	<select id="findPriceByFromTo" parameterType="String" resultType="Price">
 		select * from PRICE where AIRFROM = #{From} and AIRTO = #{To}

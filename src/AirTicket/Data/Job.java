@@ -1,8 +1,11 @@
 package AirTicket.Data;
 
+import java.sql.Date;
+
 public class Job {
 	private int id,userid,lmoney;
 	private String airfrom,airto;
+	private Date airdate;
 	public int getId() {
 		return id;
 	}
@@ -32,6 +35,12 @@ public class Job {
 	}
 	public void setLmoney(int lmoney) {
 		this.lmoney = lmoney;
+	}
+	public Date getAirdate() {
+		return airdate;
+	}
+	public void setAirdate(Date airdate) {
+		this.airdate = airdate;
 	}
 	
 }
