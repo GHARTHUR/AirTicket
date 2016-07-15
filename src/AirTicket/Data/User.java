@@ -1,8 +1,8 @@
 package AirTicket.Data;
 
 public class User {
-	int id;
-	String username,password;
+	private int id;
+	private String username,password;
 	
 	public int getId() {
 		return id;

@@ -1,5 +1,8 @@
 package AirTicket.Service;
 
-public abstract class Api {
+import javax.annotation.Resource;
 
+public abstract class Api {
+	@Resource
+	
 }
