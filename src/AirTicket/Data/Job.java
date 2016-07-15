@@ -1,7 +1,7 @@
 package AirTicket.Data;
 
 public class Job {
-	private int id,userid;
+	private int id,userid,lmoney;
 	private String airfrom,airto;
 	public int getId() {
 		return id;
@@ -27,6 +27,11 @@ public class Job {
 	public void setAirto(String airto) {
 		this.airto = airto;
 	}
-	
+	public int getLmoney() {
+		return lmoney;
+	}
+	public void setLmoney(int lmoney) {
+		this.lmoney = lmoney;
+	}
 	
 }

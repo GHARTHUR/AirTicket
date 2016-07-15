@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AirTicket.Dao.JobDao">
-	<select id="findByUsername" parameterType="String" resultType="User">
-		select * from USER where username = #{username}
-	</select>
+	<insert id="addJob" parameterType="Job">
+		insert into JOB values (NULL,#{userid},#{airfrom},#{airto},#{lmoney})
+	</insert>
+	<delete id="delById">
+		DELETE FROM JOB where id = #{0} 
+	</delete>
+	<update id="updateJob" parameterType="Job">
+		update JOB set LMONEY = #{lmoney} where id = #{id}
+	</update>
 </mapper>

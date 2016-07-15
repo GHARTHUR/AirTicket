@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AirTicket.Dao.PriceDao">
-	<select id="findByUsername" parameterType="String" resultType="User">
-		select * from USER where username = #{username}
+	<insert id="addPrice" parameterType="Price">
+		insert into JOB values (NULL,#{airfrom},#{airto},#{airtime},#{price})
+	</insert>
+	<select id="findPriceByFromTo" parameterType="String" resultType="Price">
+		select * from PRICE where AIRFROM = #{From} and AIRTO = #{To}
 	</select>
 </mapper>

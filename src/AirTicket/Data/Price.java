@@ -1,5 +1,9 @@
 package AirTicket.Data;
 
-public class Price {
+import java.sql.Date;
 
+public class Price {
+	private int id,price;
+	private String airfrom,airto;
+	private Date airtime;
 }
