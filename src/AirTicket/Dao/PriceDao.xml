@@ -6,6 +6,6 @@
 		insert into PRICE values (NULL,#{airfrom},#{airto},#{airtime},#{price},#{airdate})
 	</insert>
 	<select id="findPriceByFromTo" parameterType="String" resultType="Price">
-		select * from PRICE where AIRFROM = #{From} and AIRTO = #{To}
+		select * from PRICE where AIRFROM = #{0} and AIRTO = #{1}
 	</select>
 </mapper>

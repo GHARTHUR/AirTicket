@@ -10,4 +10,5 @@ public interface JobDao {
 	int delJob(int id);
 	int updateJob(Job job);
 	List<Job> findAll();
+	List<Job> findByUserId(int userid);
 }

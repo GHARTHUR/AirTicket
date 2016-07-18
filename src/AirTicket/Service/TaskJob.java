@@ -34,7 +34,7 @@ public class TaskJob {
 	@Resource
 	Mail mail;
 	
-    @Scheduled(cron = "0 * * * * ?")//0 0/30 * * * ?  
+    @Scheduled(cron = "0 0/30 * * * ?")//0 0/30 * * * ?  
     public void job1() throws IOException, JSONException, GeneralSecurityException {  
     	List<Job> job = jobdao.findAll();
     	for(Job temp : job){

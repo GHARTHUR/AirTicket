@@ -3,14 +3,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>登陆</title>
+<title>错误</title>
 </head>
 <body>
 <h3>${msg}</h3>
-<form method="POST" action="./Login">
-	<input type="text" name="username" />
-	<input type="password" name="password" />
-	<button type="submit">登陆</button>
-</form>
 </body>
 </html>
