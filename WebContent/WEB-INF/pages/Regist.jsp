@@ -4,24 +4,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登陆</title>
+<%@ include file="model/head.jsp" %></head>
 </head>
 <body>
-<script type="text/javascript">
-	function checkEmail(){
-		var temp = document.getElementById("email");
-        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-        if(!myreg.test(temp.value))
-        {
-            alert('提示\n\n请输入有效的E_mail！');
-            return false;
-        }
-	} 
-</script>
-<h3>${msg}</h3>
-<form method="POST" action="./Regist">
-	<input type="text" name="username" id="email"/>
-	<input type="password" name="password" />
-	<button type="submit" onClick="return checkEmail()">注册</button>
-</form>
+<div class="container">
+        <div class="well col-lg-4 col-lg-offset-4 Login col-sm-6 col-sm-offset-3">
+            <form method="POST" action="./Regist" class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label" >邮箱</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" placeholder="Email" name="username"></div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-3 control-label" >密码</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" placeholder="Password" name="password"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-5 col-sm-10">
+                        <button type="submit" class="btn btn-default">注册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>${msg}</div>
+    </div>
 </body>
 </html>
