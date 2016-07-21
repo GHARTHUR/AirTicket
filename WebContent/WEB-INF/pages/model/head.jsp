@@ -7,3 +7,5 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/Chart.js/1.1.1/Chart.min.js"></script>
 <link rel="stylesheet" href="./css/TT.css">
+<link rel="stylesheet" href="./css/DateTimePicker.min.css">
+<script src="./js/DateTimePicker.js"></script>

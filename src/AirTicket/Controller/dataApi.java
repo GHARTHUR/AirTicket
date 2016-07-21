@@ -37,7 +37,7 @@ public class dataApi {
 		for(Job dd : job){
 			JSONArray ans = new JSONArray();
 			List<Price> data = priceDao.findPriceByFromTo(dd.getAirfrom(), dd.getAirto());
-			data = data.subList(data.size()-20, data.size());
+			data = data.subList(data.size()-20>=0?data.size()-20:data.size(), data.size());
 			for(Price temp : data){
 				JSONObject js = new JSONObject();
 				js.put("price", temp.getPrice());

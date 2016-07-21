@@ -41,7 +41,8 @@ public class TaskJob {
     		if(temp.getAirdate().before(new Date())){
     			jobdao.delJob(temp.getId());
     		}
-    		int price = qapi.getAirPrice(DateFormat.getDateInstance().format(temp.getAirdate()), temp.getAirfrom(), temp.getAirto());
+    		java.text.DateFormat format1 = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    		int price = qapi.getAirPrice(format1.format(temp.getAirdate()), temp.getAirfrom(), temp.getAirto());
     		if(temp.getLmoney()>price){
     			temp.setLmoney(price);
     			mail.mainto(temp,userdao.findById(temp.getUserid()));

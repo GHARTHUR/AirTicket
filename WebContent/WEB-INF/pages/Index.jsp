@@ -17,7 +17,7 @@
 					<input type="text" class="form-control addJob" placeholder="重庆" name="airto" style="width: 100px;"></div>
 				<div class="form-group">
 					<label for="exampleInputEmail2">日期：</label>
-					<input type="text" class="form-control" placeholder="2015-3-7" name="airdate"></div>
+					<input type="text" class="form-control" style="background-color: #ffffff;" placeholder="2015-3-7" name="airdate" data-field="date" data-format="yyyy-MM-dd" readonly></div>
 				<button type="submit" class="btn btn-success">添加监控</button>
 			</form>
 			<hr/>
@@ -27,8 +27,18 @@
 			<div id="canvas">
 				
 			</div>
+			<div id="dtBox"></div>
 		</div>
 		<div>${msg}</div>
 	</div>
+	<script type="text/javascript">
+		
+			$(document).ready(function()
+			{
+				$("#dtBox").DateTimePicker();
+			});
+		
+		</script>
+	
 </body>
 </html>
