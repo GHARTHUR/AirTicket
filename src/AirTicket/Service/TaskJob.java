@@ -40,6 +40,7 @@ public class TaskJob {
     	for(Job temp : job){
     		if(temp.getAirdate().before(new Date())){
     			jobdao.delJob(temp.getId());
+    			return;
     		}
     		java.text.DateFormat format1 = new java.text.SimpleDateFormat("yyyy-MM-dd");
     		int price = qapi.getAirPrice(format1.format(temp.getAirdate()), temp.getAirfrom(), temp.getAirto());

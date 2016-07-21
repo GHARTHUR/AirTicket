@@ -5,8 +5,8 @@
 	<insert id="addJob" parameterType="Job">
 		insert into JOB values (NULL,#{userid},#{airfrom},#{airto},#{lmoney},#{airdate})
 	</insert>
-	<delete id="delById">
-		DELETE FROM JOB where id = #{0} 
+	<delete id="delJob" parameterType="int">
+		DELETE FROM JOB where id = #{id} 
 	</delete>
 	<update id="updateJob" parameterType="Job">
 		update JOB set LMONEY = #{lmoney} where id = #{id}

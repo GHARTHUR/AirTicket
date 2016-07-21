@@ -9,3 +9,6 @@
 <link rel="stylesheet" href="./css/TT.css">
 <link rel="stylesheet" href="./css/DateTimePicker.min.css">
 <script src="./js/DateTimePicker.js"></script>
+<script src="./js/aircity.js"></script>
+<script src="./js/j.dimensions.js"></script>
+<script src="./js/j.suggest.js"></script>
