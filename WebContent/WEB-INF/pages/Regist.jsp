@@ -3,8 +3,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>登陆</title>
+<title>飞机票监控小站-注册</title>
 <%@ include file="model/head.jsp" %></head>
+<script src="./js/Regist.js"></script>
 </head>
 <body>
 <div class="container">
@@ -13,12 +14,20 @@
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-3 control-label" >邮箱</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" placeholder="Email" name="username"></div>
+                        <input type="email" class="form-control" placeholder="Email" name="username" id="username">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="col-sm-3 control-label" >密码</label>
                     <div class="col-sm-9">
                         <input type="password" class="form-control" placeholder="Password" name="password"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-3 control-label" >验证码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Check" name="check"></div>
+                    <button class="btn btn-success col-ms-2" id="check" onclick="return false;">验证码</button>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-5 col-sm-10">

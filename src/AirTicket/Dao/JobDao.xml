@@ -15,6 +15,6 @@
 		select * from JOB
 	</select>
 	<select id="findByUserId" resultType="Job" parameterType="int">
-		select * from JOB where USERID = userid
+		select * from JOB where USERID = #{userid}
 	</select>
 </mapper>

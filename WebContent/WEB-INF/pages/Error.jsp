@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>错误</title>
+<title>飞机票监控小站-错误</title>
 </head>
 <body>
 <h3>${msg}</h3>

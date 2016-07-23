@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>主页</title>
+	<title>飞机票监控小站-主页</title>
 	<%@ include file="model/head.jsp" %></head>
 	<script src="./js/TT.js"></script>
 <body>

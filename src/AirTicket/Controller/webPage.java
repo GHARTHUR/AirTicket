@@ -1,6 +1,7 @@
 package AirTicket.Controller;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,9 +9,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONException;
+import org.springframework.beans.factory.xml.ResourceEntityResolver;
+import org.springframework.cglib.transform.AbstractClassFilterTransformer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +24,9 @@ import AirTicket.Dao.JobDao;
 import AirTicket.Dao.UserDao;
 import AirTicket.Data.Job;
 import AirTicket.Data.User;
+import AirTicket.Service.Mail;
 import AirTicket.Service.QunaerApi;
+import jdk.internal.org.objectweb.asm.util.CheckAnnotationAdapter;
 
 @Controller
 public class webPage {
@@ -33,6 +39,8 @@ public class webPage {
 	private JobDao jobdao;
 	@Resource
 	private HttpSession httpSession;
+	@Resource 
+	private Mail mail;
 	
 	String msg = "<div class='alert alert-danger alert-dismissible  col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><p>DATA</p></div>";
 	
@@ -68,7 +76,7 @@ public class webPage {
 	}
 	
 	@RequestMapping(value="Regist")
-	public ModelAndView Regist(User user,Model md){
+	public ModelAndView Regist(User user,Model md,String check){
 		ModelAndView model = new ModelAndView();
 		
 		if(user.getUsername() == null){
@@ -78,6 +86,12 @@ public class webPage {
 		
 		Pattern pattern = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
 		Matcher matcher = pattern.matcher(user.getUsername());
+		String Rcheck = (String)httpSession.getAttribute("check");
+		if(!Rcheck.equals(check)){
+			md.addAttribute("msg", msg.replaceAll("DATA", "验证码错误"));
+			model.setViewName("Regist");
+			return model;
+		}
 		if(matcher.matches()){
 			md.addAttribute("msg", msg.replaceAll("DATA", "注册成功，请登录").replace("alert-danger","alert-success"));
 			userdao.addUser(user);
@@ -87,6 +101,28 @@ public class webPage {
 			model.setViewName("Error");
 		}
 		return model;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="Check")
+	public String Check(Model md,String username) throws GeneralSecurityException{
+		Pattern pattern = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+		Matcher matcher = pattern.matcher(username);
+		if(!matcher.matches()){
+			return "mail error ";
+		}
+		String check = "";
+		for(int i=0;i<6;i++){
+			check += (int)(1+Math.random()*(9-1+1));
+		}
+		httpSession.setAttribute("check", check);
+		boolean ans = mail.mainto(username, "您的验证码为："+check+"别告诉其他人~~~", "飞机监控小站点注册");
+		if(ans){
+			return "ok";
+		}
+		else{
+			return "error";
+		}
 	}
 	
 	@RequestMapping(value="Index")
